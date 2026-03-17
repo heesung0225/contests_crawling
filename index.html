@@ -10,6 +10,7 @@
       font-family: 'Segoe UI', 'Apple SD Gothic Neo', Pretendard, sans-serif;
       background: #f0f4ff;
       color: #222;
+      min-height: 100vh;
     }
     header {
       background: linear-gradient(135deg, #1e3a8a, #3b82f6);
@@ -28,11 +29,40 @@
       font-size: 0.82rem;
     }
     .container {
-      max-width: 1000px;
+      max-width: 1040px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    .count { margin-bottom: 1.2rem; font-size: 0.9rem; color: #555; }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .count { font-size: 0.9rem; color: #555; }
+    .sort-group {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .sort-btn {
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 999px;
+      background: white;
+      font-size: 0.82rem;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .sort-btn:hover { border-color: #3b82f6; color: #1d4ed8; }
+    .sort-btn.active {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      color: white;
+      font-weight: 600;
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -44,15 +74,43 @@
       overflow: hidden;
       box-shadow: 0 2px 10px rgba(0,0,0,0.07);
       transition: transform 0.15s, box-shadow 0.15s;
+      display: flex;
+      flex-direction: column;
     }
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.13);
     }
-    .card-body { padding: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-    .card-top { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+    .card-img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+    .card-img-placeholder {
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(135deg, #e0e7ff, #bfdbfe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .card-body {
+      padding: 1rem 1.1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      flex: 1;
+    }
+    .card-top {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
     .card-title {
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       font-weight: 600;
       color: #1e3a8a;
       text-decoration: none;
@@ -60,18 +118,36 @@
       display: block;
     }
     .card-title:hover { text-decoration: underline; }
-    .card-category { font-size: 0.78rem; color: #888; }
-    .card-host { font-size: 0.82rem; color: #666; }
-    .dday-badge, .status-badge, .source-badge {
-      font-size: 0.7rem;
+    .card-category { font-size: 0.75rem; color: #9ca3af; }
+    .card-host { font-size: 0.82rem; color: #6b7280; }
+    .card-deadline {
+      margin-top: auto;
+      padding-top: 0.6rem;
+      border-top: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #374151;
+    }
+    .badge {
+      font-size: 0.68rem;
       font-weight: 700;
       padding: 0.18rem 0.55rem;
       border-radius: 999px;
+      white-space: nowrap;
     }
-    .dday-urgent { background: #fee2e2; color: #dc2626; }
-    .dday-normal { background: #dbeafe; color: #1d4ed8; }
-    .status-badge { background: #dcfce7; color: #16a34a; }
-    .source-badge { background: #f3f4f6; color: #6b7280; }
+    .badge-urgent { background: #fee2e2; color: #dc2626; }
+    .badge-normal { background: #dbeafe; color: #1d4ed8; }
+    .badge-done { background: #f3f4f6; color: #9ca3af; }
+    .badge-status { background: #dcfce7; color: #16a34a; }
+    .badge-source { background: #f3f4f6; color: #6b7280; }
+    .no-results {
+      text-align: center;
+      color: #9ca3af;
+      padding: 4rem 1rem;
+      grid-column: 1 / -1;
+    }
     footer {
       text-align: center;
       padding: 2.5rem 1rem;
@@ -86,369 +162,90 @@
   <header>
     <h1>💻 IT 공모전 Daily</h1>
     <p>IT·소프트웨어 분야 공모전 정보를 매일 자동 수집합니다</p>
-    <div class="update-badge">🔄 마지막 업데이트: 2026년 03월 17일 13:42 (KST)</div>
+    <div class="update-badge">🔄 마지막 업데이트: 2026년 03월 17일 14:08 (KST)</div>
   </header>
+
   <div class="container">
-    <p class="count">총 <strong>35</strong>개의 공모전</p>
-    <div class="grid">
-      
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-13</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105775" target="_blank" class="card-title">[서울특별시 X 한국외식업중앙회] 외식산업 전문가 인력양성 - 2026 서울 매력일자리 사업 참여자 모집</a>
-            <p class="card-category">분야 : 기획/아이디어, 광고/마케팅, 대외활동/서포터즈, 취업/창업, 기타</p>
-            <p class="card-host">🏢 서울특별시 X 한국외식업중앙회</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-75</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105566" target="_blank" class="card-title">제13회 산업안전보건 조사자료 논문 경진대회</a>
-            <p class="card-category">분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 대외활동/서포터즈, 기타</p>
-            <p class="card-host">🏢 한국산업안전보건공단 산업안전보건연구원</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-19</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105517" target="_blank" class="card-title">제7기 과기정통부 LMO SAFETY 기자단 모집</a>
-            <p class="card-category">분야 : 광고/마케팅, 논문/리포트, 영상/UCC/사진, 디자인/캐릭터/웹툰, 과학/공학, 대외활동/서포터즈</p>
-            <p class="card-host">🏢 과학기술정보통신부</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-90</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105362" target="_blank" class="card-title">제10회 소비자지향성 개선과제 공모전</a>
-            <p class="card-category">분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 예체능/미술/음악, 기타</p>
-            <p class="card-host">🏢 공정거래위원회</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-44</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105361" target="_blank" class="card-title">[산업통상부] 2026 엔지니어링산업 경진대회</a>
-            <p class="card-category">분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 건축/건설/인테리어</p>
-            <p class="card-host">🏢 산업통상부</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-17</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105792" target="_blank" class="card-title">2026년 충청북도사회서비스원 서포터즈 2기 모집</a>
-            <p class="card-category">분야 : 대외활동/서포터즈</p>
-            <p class="card-host">🏢 충청북도사회서비스원</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-29</span><span class="status-badge">접수예정</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105785" target="_blank" class="card-title">2026년 외국발 허위정보 대응 대학생 아이디어 공모전</a>
-            <p class="card-category">분야 : 기획/아이디어</p>
-            <p class="card-host">🏢 한국과학기술원(KAIST)</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-31</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105777" target="_blank" class="card-title">엄마까투리와 함께하는 실종아동예방 동요챌린지</a>
-            <p class="card-category">분야 : 영상/UCC/사진</p>
-            <p class="card-host">🏢 아동권리보장원 Funny Flux</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-44</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105761" target="_blank" class="card-title">2026년 석·박사 및 대학(원)생 국제인도법 연구비 지원 사업 참가자 모집</a>
-            <p class="card-category">분야 : 논문/리포트</p>
-            <p class="card-host">🏢 대한적십자사 인도법연구소</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-167</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105753" target="_blank" class="card-title">2026 모두가 누리는 연금을 위한 국민연금 연구과제 대(對)국민 공모전</a>
-            <p class="card-category">분야 : 논문/리포트</p>
-            <p class="card-host">🏢 국민연금공단(국민연금연구원)</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-33</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105745" target="_blank" class="card-title">2026 태안국제원예치유박람회 치유가요제</a>
-            <p class="card-category">분야 : 예체능/미술/음악</p>
-            <p class="card-host">🏢 충청남도, 태안군</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-59</span><span class="status-badge">접수예정</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105741" target="_blank" class="card-title">2026 김천김밥축제 캐릭터 꼬달이 기념품 공모전</a>
-            <p class="card-category">분야 : 예체능/미술/음악</p>
-            <p class="card-host">🏢 김천시</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-urgent">D-3</span><span class="status-badge">마감임박</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105727" target="_blank" class="card-title">2026 국립합창단 코코서포터즈 모집</a>
-            <p class="card-category">분야 : 대외활동/서포터즈</p>
-            <p class="card-host">🏢 재단법인 국립합창단</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-10</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105726" target="_blank" class="card-title">완주 30초 챌린지 (완주에서의 30초)</a>
-            <p class="card-category">분야 : 영상/UCC/사진</p>
-            <p class="card-host">🏢 완주군</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">위비티</span><span class="dday-badge dday-normal">D-9</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105722" target="_blank" class="card-title">2026년도 공연예술창작산실 올해의신작 실연심의 전통예술 분야 관객평가단 모집</a>
-            <p class="card-category">분야 : 기타</p>
-            <p class="card-host">🏢 한국문화예술위원회</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603030044" target="_blank" class="card-title">국세청 개청 60주년 기념 세금작품 공모전</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030810001&str_no=202603040034" target="_blank" class="card-title">2026 고래마라톤</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603110065" target="_blank" class="card-title">아토포스 2026년 신인상 공모</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603100032" target="_blank" class="card-title">스토니크 로즈데이 메시지 카드 카피라이팅 공모전</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603040005" target="_blank" class="card-title">생활 속 목재이용 국민참여 공모전 ‘목재 공감(共感) 키트’</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202603100040" target="_blank" class="card-title">디지털미디어 아트 페스타 Digital Media Art Festa(DMAF) 2026</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603130023" target="_blank" class="card-title">제 1회 쉐어잇 빡춘문예</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603120044" target="_blank" class="card-title">시크모먼트 브랜드 슬로건 공모전</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603130013" target="_blank" class="card-title">제 46회 장애인의 날을 맞아 2026년 제 12회 장애인식개선 공모전 <다시, 봄!></a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202603110052" target="_blank" class="card-title">2026 세계 물의 날 기념 [AI 이미지 콘테스트] “Ai, 물의 가치를 새롭게 그리다”</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603090069" target="_blank" class="card-title">청소년·청년 디지털 메타버스 외교관 14기 모집</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603090005" target="_blank" class="card-title">KOICA 프로젝트 봉사단 7기 모집</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040310001&str_no=202603090011" target="_blank" class="card-title">2026년 한국우편사업진흥원 시민참여혁신단 '포티즌(POtizen)' 모집</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603100013" target="_blank" class="card-title">2026 블루크로스 골든타임의료봉사단 모집</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603100002" target="_blank" class="card-title">수원시 박물관 SNS 서포터즈 2기</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603100030" target="_blank" class="card-title">글로벌 기업 IBM이 만든 AI 교육! AX Academy 국비지원취업교육 수강생 모집</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603090010" target="_blank" class="card-title">2026년 제12기 부산 우리말 가꿈이 모집</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603090031" target="_blank" class="card-title">[가비아] 자바(Java) 기반 AI 풀스택 국비지원 부트캠프</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603100017" target="_blank" class="card-title">더존비즈온이 설계한 클라우드 엔지니어 국비지원취업교육</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <span class="source-badge">공모전대통령</span><span class="status-badge">접수중</span>
-            </div>
-            <a href="https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040510001&str_no=202603090055" target="_blank" class="card-title">[꽃피는 남해]남해 꽃 바람(春風) 콘서트/버스킹/홍보중</a>
-            <p class="card-category">IT·컴퓨터</p>
-            <p class="card-host">🏢 -</p>
-          </div>
-        </div>
+    <div class="toolbar">
+      <p class="count" id="count-label">총 <strong>35</strong>개의 공모전</p>
+      <div class="sort-group">
+        <button class="sort-btn active" onclick="sortContests('dday')">📅 마감순</button>
+        <button class="sort-btn" onclick="sortContests('latest')">🆕 최신순</button>
+        <button class="sort-btn" onclick="sortContests('title')">가나다순</button>
+      </div>
     </div>
+    <div class="grid" id="grid"></div>
   </div>
+
   <footer>
     출처:
     <a href="https://www.wevity.com" target="_blank">위비티</a> ·
     <a href="https://www.contestkorea.com" target="_blank">공모전 대통령</a><br>
     매일 오전 9시(KST) GitHub Actions 자동 업데이트
   </footer>
+
+  <script>
+    const ALL_CONTESTS = [{"title": "[서울특별시 X 한국외식업중앙회] 외식산업 전문가 인력양성 - 2026 서울 매력일자리 사업 참여자 모집", "host": "서울특별시 X 한국외식업중앙회", "category": "분야 : 기획/아이디어, 광고/마케팅, 대외활동/서포터즈, 취업/창업, 기타", "dday": "D-13", "dday_num": 13, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105775", "thumb": "https://www.wevity.com/upload/contest/20260316194835_067a0592.jpg", "source": "위비티"}, {"title": "제13회 산업안전보건 조사자료 논문 경진대회", "host": "한국산업안전보건공단 산업안전보건연구원", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 대외활동/서포터즈, 기타", "dday": "D-75", "dday_num": 75, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105566", "thumb": "https://www.wevity.com/upload/contest/20260310002247_8635db02.jpg", "source": "위비티"}, {"title": "제7기 과기정통부 LMO SAFETY 기자단 모집", "host": "과학기술정보통신부", "category": "분야 : 광고/마케팅, 논문/리포트, 영상/UCC/사진, 디자인/캐릭터/웹툰, 과학/공학, 대외활동/서포터즈", "dday": "D-19", "dday_num": 19, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105517", "thumb": "https://www.wevity.com/upload/contest/20260309004822_3d9c9eac.jpg", "source": "위비티"}, {"title": "제10회 소비자지향성 개선과제 공모전", "host": "공정거래위원회", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 예체능/미술/음악, 기타", "dday": "D-90", "dday_num": 90, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105362", "thumb": "https://www.wevity.com/upload/contest/20260302235747_3061936b.jpg", "source": "위비티"}, {"title": "[산업통상부] 2026 엔지니어링산업 경진대회", "host": "산업통상부", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 건축/건설/인테리어", "dday": "D-44", "dday_num": 44, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105361", "thumb": "https://www.wevity.com/upload/contest/20260302222544_5bab69a5.jpg", "source": "위비티"}, {"title": "2026년 충청북도사회서비스원 서포터즈 2기 모집", "host": "충청북도사회서비스원", "category": "분야 : 대외활동/서포터즈", "dday": "D-17", "dday_num": 17, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105792", "thumb": "https://www.wevity.com/upload/contest/20260317114924_afd56e61.jpg", "source": "위비티"}, {"title": "2026년 외국발 허위정보 대응 대학생 아이디어 공모전", "host": "한국과학기술원(KAIST)", "category": "분야 : 기획/아이디어", "dday": "D-29", "dday_num": 29, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105785", "thumb": "https://www.wevity.com/upload/contest/20260317111511_43422661.jpg", "source": "위비티"}, {"title": "엄마까투리와 함께하는 실종아동예방 동요챌린지", "host": "아동권리보장원 Funny Flux", "category": "분야 : 영상/UCC/사진", "dday": "D-31", "dday_num": 31, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105777", "thumb": "https://www.wevity.com/upload/contest/20260317101546_b97a1bf6.jpg", "source": "위비티"}, {"title": "2026년 석·박사 및 대학(원)생 국제인도법 연구비 지원 사업 참가자 모집", "host": "대한적십자사 인도법연구소", "category": "분야 : 논문/리포트", "dday": "D-44", "dday_num": 44, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105761", "thumb": "https://www.wevity.com/upload/contest/20260316155208_d7084c31.jpg", "source": "위비티"}, {"title": "2026 모두가 누리는 연금을 위한 국민연금 연구과제 대(對)국민 공모전", "host": "국민연금공단(국민연금연구원)", "category": "분야 : 논문/리포트", "dday": "D-167", "dday_num": 167, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105753", "thumb": "https://www.wevity.com/upload/contest/20260316132750_df617962.jpg", "source": "위비티"}, {"title": "2026 태안국제원예치유박람회 치유가요제", "host": "충청남도, 태안군", "category": "분야 : 예체능/미술/음악", "dday": "D-33", "dday_num": 33, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105745", "thumb": "https://www.wevity.com/upload/contest/20260316130418_2218e1b3.jpg", "source": "위비티"}, {"title": "2026 김천김밥축제 캐릭터 꼬달이 기념품 공모전", "host": "김천시", "category": "분야 : 예체능/미술/음악", "dday": "D-59", "dday_num": 59, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105741", "thumb": "https://www.wevity.com/upload/contest/20260315180901_1dc0b404.jpg", "source": "위비티"}, {"title": "2026 국립합창단 코코서포터즈 모집", "host": "재단법인 국립합창단", "category": "분야 : 대외활동/서포터즈", "dday": "D-3", "dday_num": 3, "status": "마감임박", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105727", "thumb": "https://www.wevity.com/upload/contest/20260313170555_9838a9d8.jpg", "source": "위비티"}, {"title": "완주 30초 챌린지 (완주에서의 30초)", "host": "완주군", "category": "분야 : 영상/UCC/사진", "dday": "D-10", "dday_num": 10, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105726", "thumb": "https://www.wevity.com/upload/contest/20260313170100_0667f4f2.jpg", "source": "위비티"}, {"title": "2026년도 공연예술창작산실 올해의신작 실연심의 전통예술 분야 관객평가단 모집", "host": "한국문화예술위원회", "category": "분야 : 기타", "dday": "D-9", "dday_num": 9, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105722", "thumb": "https://www.wevity.com/upload/contest/20260313162949_3a5356e1.jpg", "source": "위비티"}, {"title": "국세청 개청 60주년 기념 세금작품 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603030044", "thumb": "", "source": "공모전대통령"}, {"title": "2026 고래마라톤", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030810001&str_no=202603040034", "thumb": "", "source": "공모전대통령"}, {"title": "아토포스 2026년 신인상 공모", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603110065", "thumb": "", "source": "공모전대통령"}, {"title": "스토니크 로즈데이 메시지 카드 카피라이팅 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603100032", "thumb": "", "source": "공모전대통령"}, {"title": "생활 속 목재이용 국민참여 공모전 ‘목재 공감(共感) 키트’", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603040005", "thumb": "", "source": "공모전대통령"}, {"title": "디지털미디어 아트 페스타 Digital Media Art Festa(DMAF) 2026", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202603100040", "thumb": "", "source": "공모전대통령"}, {"title": "제 1회 쉐어잇 빡춘문예", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603130023", "thumb": "", "source": "공모전대통령"}, {"title": "시크모먼트 브랜드 슬로건 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603120044", "thumb": "", "source": "공모전대통령"}, {"title": "제 46회 장애인의 날을 맞아 2026년 제 12회 장애인식개선 공모전 <다시, 봄!>", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603130013", "thumb": "", "source": "공모전대통령"}, {"title": "2026 세계 물의 날 기념 [AI 이미지 콘테스트] “Ai, 물의 가치를 새롭게 그리다”", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202603110052", "thumb": "", "source": "공모전대통령"}, {"title": "청소년·청년 디지털 메타버스 외교관 14기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603090069", "thumb": "", "source": "공모전대통령"}, {"title": "KOICA 프로젝트 봉사단 7기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603090005", "thumb": "", "source": "공모전대통령"}, {"title": "2026년 한국우편사업진흥원 시민참여혁신단 '포티즌(POtizen)' 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040310001&str_no=202603090011", "thumb": "", "source": "공모전대통령"}, {"title": "2026 블루크로스 골든타임의료봉사단 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603100013", "thumb": "", "source": "공모전대통령"}, {"title": "수원시 박물관 SNS 서포터즈 2기", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603100002", "thumb": "", "source": "공모전대통령"}, {"title": "글로벌 기업 IBM이 만든 AI 교육! AX Academy 국비지원취업교육 수강생 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603100030", "thumb": "", "source": "공모전대통령"}, {"title": "2026년 제12기 부산 우리말 가꿈이 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603090010", "thumb": "", "source": "공모전대통령"}, {"title": "[가비아] 자바(Java) 기반 AI 풀스택 국비지원 부트캠프", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603090031", "thumb": "", "source": "공모전대통령"}, {"title": "더존비즈온이 설계한 클라우드 엔지니어 국비지원취업교육", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603100017", "thumb": "", "source": "공모전대통령"}, {"title": "[꽃피는 남해]남해 꽃 바람(春風) 콘서트/버스킹/홍보중", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040510001&str_no=202603090055", "thumb": "", "source": "공모전대통령"}];
+    let currentSort = 'dday';
+
+    function getDdayBadge(dday, ddayNum) {
+      if (!dday) return '';
+      if (ddayNum < 0) return `<span class="badge badge-done">${dday}</span>`;
+      if (ddayNum === 0) return `<span class="badge badge-urgent">D-day</span>`;
+      if (ddayNum <= 7) return `<span class="badge badge-urgent">${dday}</span>`;
+      return `<span class="badge badge-normal">${dday}</span>`;
+    }
+
+    function renderCard(c) {
+      const imgHtml = c.thumb
+        ? `<img class="card-img" src="${c.thumb}" alt="${c.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>💻</div>'">`
+        : `<div class="card-img-placeholder">💻</div>`;
+
+      const ddayBadge = getDdayBadge(c.dday, c.dday_num);
+      const statusBadge = c.status ? `<span class="badge badge-status">${c.status}</span>` : '';
+      const sourceBadge = `<span class="badge badge-source">${c.source}</span>`;
+      const categoryHtml = c.category ? `<p class="card-category">${c.category}</p>` : '';
+      const deadlineHtml = c.dday
+        ? `<div class="card-deadline">⏰ 마감: ${c.dday}</div>`
+        : '';
+
+      return `
+        <div class="card">
+          ${imgHtml}
+          <div class="card-body">
+            <div class="card-top">${sourceBadge}${ddayBadge}${statusBadge}</div>
+            <a href="${c.link}" target="_blank" class="card-title">${c.title}</a>
+            ${categoryHtml}
+            <p class="card-host">🏢 ${c.host}</p>
+            ${deadlineHtml}
+          </div>
+        </div>`;
+    }
+
+    function sortContests(mode) {
+      currentSort = mode;
+      document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      let sorted = [...ALL_CONTESTS];
+      if (mode === 'dday') {
+        sorted.sort((a, b) => a.dday_num - b.dday_num);
+      } else if (mode === 'latest') {
+        // 원래 순서 유지 (수집 순서 = 최신순)
+        sorted = [...ALL_CONTESTS];
+      } else if (mode === 'title') {
+        sorted.sort((a, b) => a.title.localeCompare(b.title, 'ko'));
+      }
+
+      const grid = document.getElementById('grid');
+      grid.innerHTML = sorted.map(renderCard).join('');
+    }
+
+    // 초기 렌더링 (마감순)
+    (function() {
+      const sorted = [...ALL_CONTESTS].sort((a, b) => a.dday_num - b.dday_num);
+      document.getElementById('grid').innerHTML = sorted.map(renderCard).join('');
+    })();
+  </script>
 </body>
 </html>
