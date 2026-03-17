@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone, timedelta
 import json
-import os
 
 KST = timezone(timedelta(hours=9))
 
@@ -14,57 +13,62 @@ HEADERS = {
     )
 }
 
+
 def scrape_wevity():
     """위비티 IT/소프트웨어 공모전 크롤링"""
     contests = []
-    # cidx=6 : IT/소프트웨어 카테고리
     base_url = "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&pagenum={page}"
 
-    for page in range(1, 4):  # 최대 3페이지
+    for page in range(1, 4):
         try:
-            url = base_url.format(page=page)
-            res = requests.get(url, headers=HEADERS, timeout=10)
+            res = requests.get(base_url.format(page=page), headers=HEADERS, timeout=10)
             res.raise_for_status()
             soup = BeautifulSoup(res.text, "html.parser")
 
-            items = soup.select("ul.list-body > li")
+            # 헤더(top 클래스) 제외한 실제 공모전 항목
+            items = soup.select("ul.list > li:not(.top)")
             if not items:
                 break
 
             for item in items:
                 try:
-                    title_tag = item.select_one("div.tit > a")
-                    if not title_tag:
+                    a_tag = item.select_one("div.tit > a")
+                    if not a_tag:
                         continue
 
-                    title = title_tag.get_text(strip=True)
-                    link = "https://www.wevity.com" + title_tag.get("href", "")
+                    # span 태그(신규, SPECIAL 뱃지) 텍스트 제거
+                    for span in a_tag.find_all("span"):
+                        span.decompose()
+                    title = a_tag.get_text(strip=True)
 
-                    host_tag = item.select_one("div.host")
-                    host = host_tag.get_text(strip=True) if host_tag else "-"
+                    href = a_tag.get("href", "")
+                    link = "https://www.wevity.com/" + href.lstrip("?")
+                    link = "https://www.wevity.com/" + href if not href.startswith("http") else href
 
-                    dday_tag = item.select_one("div.day > span.day")
-                    dday = dday_tag.get_text(strip=True) if dday_tag else ""
+                    sub_tit = item.select_one("div.sub-tit")
+                    category = sub_tit.get_text(strip=True) if sub_tit else ""
 
-                    date_tag = item.select_one("div.day")
-                    date_text = date_tag.get_text(strip=True) if date_tag else "-"
+                    organ = item.select_one("div.organ")
+                    host = organ.get_text(strip=True) if organ else "-"
 
-                    prize_tag = item.select_one("div.prize")
-                    prize = prize_tag.get_text(strip=True) if prize_tag else "-"
-
-                    thumb_tag = item.select_one("div.thumb img")
-                    thumb = thumb_tag.get("src", "") if thumb_tag else ""
-                    if thumb and thumb.startswith("/"):
-                        thumb = "https://www.wevity.com" + thumb
+                    day_div = item.select_one("div.day")
+                    if day_div:
+                        dday_span = day_div.find("span")
+                        status = dday_span.get_text(strip=True) if dday_span else ""
+                        # D-숫자 또는 D-day 추출
+                        day_text = day_div.get_text(separator=" ", strip=True)
+                        dday = day_text.split()[0] if day_text else ""
+                    else:
+                        dday, status = "", ""
 
                     contests.append({
                         "title": title,
                         "host": host,
+                        "category": category,
                         "dday": dday,
-                        "date": date_text,
-                        "prize": prize,
-                        "link": link,
-                        "thumb": thumb,
+                        "status": status,
+                        "link": "https://www.wevity.com/" + href,
+                        "source": "위비티",
                     })
                 except Exception:
                     continue
@@ -77,43 +81,40 @@ def scrape_wevity():
 
 
 def scrape_contestkorea():
-    """공모전 대통령 IT 공모전 크롤링 (보조)"""
+    """공모전 대통령 IT 공모전 크롤링"""
     contests = []
-    # Txt_bcode=030210 : IT/정보통신
-    url = "https://www.contestkorea.com/sub/list.php?Txt_bcode=030210&int_gbn=1"
+    # 030310: IT·컴퓨터 카테고리
+    url = "https://www.contestkorea.com/sub/list.php?int_gbn=1&Txt_bcode=030310"
 
     try:
         res = requests.get(url, headers=HEADERS, timeout=10)
         res.raise_for_status()
         soup = BeautifulSoup(res.text, "html.parser")
 
-        items = soup.select("ul.list_style_1 > li")
-        for item in items:
+        items = soup.select("div.listStyle_1_wrap li a")
+        for a_tag in items:
             try:
-                a_tag = item.select_one("div.list_con_tit > a")
-                if not a_tag:
+                # 번호와 NEW 이미지 제거 후 텍스트 추출
+                for img in a_tag.find_all("img"):
+                    img.decompose()
+                title = a_tag.get_text(strip=True)
+                # 앞 번호("1." 등) 제거
+                import re
+                title = re.sub(r"^\d+\.\s*", "", title).strip()
+                if not title:
                     continue
 
-                title = a_tag.get_text(strip=True)
-                link = "https://www.contestkorea.com/sub/" + a_tag.get("href", "").lstrip("./")
-
-                host_tag = item.select_one("span.icon_organizer")
-                host = host_tag.get_text(strip=True) if host_tag else "-"
-
-                date_tag = item.select_one("span.icon_date")
-                date_text = date_tag.get_text(strip=True) if date_tag else "-"
-
-                prize_tag = item.select_one("span.icon_prize")
-                prize = prize_tag.get_text(strip=True) if prize_tag else "-"
+                href = a_tag.get("href", "")
+                link = "https://www.contestkorea.com" + href if href.startswith("/") else href
 
                 contests.append({
                     "title": title,
-                    "host": host,
+                    "host": "-",
+                    "category": "IT·컴퓨터",
                     "dday": "",
-                    "date": date_text,
-                    "prize": prize,
+                    "status": "접수중",
                     "link": link,
-                    "thumb": "",
+                    "source": "공모전대통령",
                 })
             except Exception:
                 continue
@@ -125,32 +126,32 @@ def scrape_contestkorea():
 
 
 def generate_html(contests: list, updated_at: str) -> str:
-    cards_html = ""
-    for c in contests:
-        thumb_html = (
-            f'<img src="{c["thumb"]}" alt="thumbnail" class="card-thumb" onerror="this.style.display=\'none\'">'
-            if c["thumb"] else ""
-        )
-        dday_class = "dday-urgent" if c["dday"].startswith("D-") and any(
-            c["dday"].replace("D-", "").isdigit() and int(c["dday"].replace("D-", "")) <= 7
-            for _ in [1]
-        ) else "dday-normal"
-        dday_badge = f'<span class="dday-badge {dday_class}">{c["dday"]}</span>' if c["dday"] else ""
+    if not contests:
+        cards_html = '<p style="text-align:center;color:#999;padding:3rem">현재 수집된 공모전이 없습니다.</p>'
+    else:
+        cards_html = ""
+        for c in contests:
+            dday = c.get("dday", "")
+            # D-7 이하면 urgent
+            urgent = False
+            if dday.startswith("D-") and dday[2:].isdigit():
+                urgent = int(dday[2:]) <= 7
+            dday_class = "dday-urgent" if urgent else "dday-normal"
+            dday_badge = f'<span class="dday-badge {dday_class}">{dday}</span>' if dday else ""
+            status_badge = f'<span class="status-badge">{c["status"]}</span>' if c.get("status") else ""
+            source_badge = f'<span class="source-badge">{c["source"]}</span>'
+            category = f'<p class="card-category">{c["category"]}</p>' if c.get("category") else ""
 
-        cards_html += f"""
+            cards_html += f"""
         <div class="card">
-            {thumb_html}
-            <div class="card-body">
-                <div class="card-header-row">
-                    <a href="{c['link']}" target="_blank" class="card-title">{c['title']}</a>
-                    {dday_badge}
-                </div>
-                <p class="card-host">{c['host']}</p>
-                <div class="card-footer">
-                    <span class="card-date">📅 {c['date']}</span>
-                    <span class="card-prize">🏆 {c['prize']}</span>
-                </div>
+          <div class="card-body">
+            <div class="card-top">
+              {source_badge}{dday_badge}{status_badge}
             </div>
+            <a href="{c['link']}" target="_blank" class="card-title">{c['title']}</a>
+            {category}
+            <p class="card-host">🏢 {c['host']}</p>
+          </div>
         </div>"""
 
     return f"""<!DOCTYPE html>
@@ -162,101 +163,79 @@ def generate_html(contests: list, updated_at: str) -> str:
   <style>
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{
-      font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', Pretendard, sans-serif;
       background: #f0f4ff;
       color: #222;
-      min-height: 100vh;
     }}
     header {{
       background: linear-gradient(135deg, #1e3a8a, #3b82f6);
       color: white;
-      padding: 2rem 1.5rem 1.5rem;
+      padding: 2.5rem 1.5rem 2rem;
       text-align: center;
     }}
     header h1 {{ font-size: 2rem; letter-spacing: -0.5px; }}
     header p {{ margin-top: 0.4rem; opacity: 0.85; font-size: 0.95rem; }}
     .update-badge {{
       display: inline-block;
-      margin-top: 0.8rem;
+      margin-top: 0.9rem;
       background: rgba(255,255,255,0.2);
-      padding: 0.3rem 0.9rem;
+      padding: 0.35rem 1rem;
       border-radius: 999px;
       font-size: 0.82rem;
     }}
     .container {{
-      max-width: 960px;
+      max-width: 1000px;
       margin: 2rem auto;
       padding: 0 1rem;
     }}
-    .count {{ margin-bottom: 1rem; font-size: 0.9rem; color: #555; }}
+    .count {{ margin-bottom: 1.2rem; font-size: 0.9rem; color: #555; }}
     .grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
       gap: 1.2rem;
     }}
     .card {{
       background: white;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
       transition: transform 0.15s, box-shadow 0.15s;
-      display: flex;
-      flex-direction: column;
     }}
     .card:hover {{
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }}
-    .card-thumb {{
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }}
-    .card-body {{
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex: 1;
-    }}
-    .card-header-row {{
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }}
+    .card-body {{ padding: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }}
+    .card-top {{ display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }}
     .card-title {{
       font-size: 0.95rem;
       font-weight: 600;
       color: #1e3a8a;
       text-decoration: none;
-      flex: 1;
-      line-height: 1.4;
+      line-height: 1.45;
+      display: block;
     }}
     .card-title:hover {{ text-decoration: underline; }}
-    .dday-badge {{
-      font-size: 0.72rem;
+    .card-category {{ font-size: 0.78rem; color: #888; }}
+    .card-host {{ font-size: 0.82rem; color: #666; }}
+    .dday-badge, .status-badge, .source-badge {{
+      font-size: 0.7rem;
       font-weight: 700;
-      padding: 0.15rem 0.5rem;
+      padding: 0.18rem 0.55rem;
       border-radius: 999px;
-      white-space: nowrap;
-      flex-shrink: 0;
     }}
     .dday-urgent {{ background: #fee2e2; color: #dc2626; }}
     .dday-normal {{ background: #dbeafe; color: #1d4ed8; }}
-    .card-host {{ font-size: 0.82rem; color: #777; }}
-    .card-footer {{
-      display: flex;
-      gap: 0.8rem;
-      font-size: 0.8rem;
-      color: #555;
-      margin-top: auto;
-    }}
+    .status-badge {{ background: #dcfce7; color: #16a34a; }}
+    .source-badge {{ background: #f3f4f6; color: #6b7280; }}
     footer {{
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem 1rem;
       font-size: 0.8rem;
       color: #aaa;
+      line-height: 2;
     }}
+    footer a {{ color: #93c5fd; }}
   </style>
 </head>
 <body>
@@ -272,9 +251,10 @@ def generate_html(contests: list, updated_at: str) -> str:
     </div>
   </div>
   <footer>
-    출처: <a href="https://www.wevity.com" target="_blank">위비티</a> ·
+    출처:
+    <a href="https://www.wevity.com" target="_blank">위비티</a> ·
     <a href="https://www.contestkorea.com" target="_blank">공모전 대통령</a><br>
-    매일 오전 9시(KST) 자동 업데이트
+    매일 오전 9시(KST) GitHub Actions 자동 업데이트
   </footer>
 </body>
 </html>"""
@@ -300,7 +280,6 @@ def main():
             seen.add(c["title"])
             unique.append(c)
     contests = unique
-
     print(f"총 {len(contests)}개 (중복 제거 후)")
 
     now = datetime.now(KST).strftime("%Y년 %m월 %d일 %H:%M (KST)")
@@ -311,7 +290,8 @@ def main():
     print("index.html 생성 완료")
 
     with open("data.json", "w", encoding="utf-8") as f:
-        json.dump({"updated_at": now, "count": len(contests), "contests": contests}, f, ensure_ascii=False, indent=2)
+        json.dump({"updated_at": now, "count": len(contests), "contests": contests},
+                  f, ensure_ascii=False, indent=2)
     print("data.json 생성 완료")
 
 
