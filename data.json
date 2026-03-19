@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026년 03월 18일 11:50 (KST)",
+  "updated_at": "2026년 03월 19일 11:52 (KST)",
   "count": 20,
   "contests": [
     {
@@ -36,17 +36,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "스토니크 로즈데이 메시지 카드 카피라이팅 공모전",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603100032",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
       "title": "생활 속 목재이용 국민참여 공모전 ‘목재 공감(共感) 키트’",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -54,6 +43,17 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603040005",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "스토니크 로즈데이 메시지 카드 카피라이팅 공모전",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603100032",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -102,13 +102,13 @@
       "source": "공모전대통령"
     },
     {
-      "title": "시전문계간지 신생 신인상 공모",
+      "title": "퍼포먼스 마케팅 실무 경험 | 고객 확보 캠페인 전략 공모전",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603110003",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031410001&str_no=202603130011",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -146,17 +146,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "수원시 박물관 SNS 서포터즈 2기",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603100002",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
       "title": "2026 블루크로스 골든타임의료봉사단 모집",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -164,6 +153,17 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603100013",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "수원시 박물관 SNS 서포터즈 2기",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603100002",
       "thumb": "",
       "source": "공모전대통령"
     },
