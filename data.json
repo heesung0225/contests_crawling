@@ -1,18 +1,7 @@
 {
-  "updated_at": "2026년 03월 21일 11:36 (KST)",
+  "updated_at": "2026년 03월 22일 11:52 (KST)",
   "count": 20,
   "contests": [
-    {
-      "title": "아토포스 2026년 신인상 공모",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603110065",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
     {
       "title": "제 1회 쉐어잇 빡춘문예",
       "host": "-",
@@ -58,6 +47,17 @@
       "source": "공모전대통령"
     },
     {
+      "title": "<춘천 한 문장, 봄내글판> 전국 공모전",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603110032",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
       "title": "2026년 청소년 도박문제 예방 슬로건 공모전",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -65,17 +65,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603160026",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "퍼포먼스 마케팅 실무 경험 | 고객 확보 캠페인 전략 공모전",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031410001&str_no=202603130011",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -91,13 +80,24 @@
       "source": "공모전대통령"
     },
     {
-      "title": "<춘천 한 문장, 봄내글판> 전국 공모전",
+      "title": "시전문계간지 신생 제3회 신인상 공모",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603110032",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603160037",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "퍼포먼스 마케팅 실무 경험 | 고객 확보 캠페인 전략 공모전",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031410001&str_no=202603130011",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -124,17 +124,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "[과기부] 전국민 AI 경진대회 서포터즈 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603110088",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
       "title": "2026년 서울시고립예방센터  시민홍보단 ‘똑똑이’",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -142,39 +131,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603120002",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "한국여성의전화 12기 기자단",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603110005",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "2026 청라수 시민 서포터즈 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603110010",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "[서울시매력일자리] AI 과정개발 & 교육담당자 과정",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603110086",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -201,24 +157,68 @@
       "source": "공모전대통령"
     },
     {
-      "title": "아동권리보장원 제5기 서포터스 모집",
+      "title": "제41회 부천복사골예술제  <숨어있는 예인(藝人) 찾기 프로젝트>  모집",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603110045",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040510001&str_no=202603120042",
       "thumb": "",
       "source": "공모전대통령"
     },
     {
-      "title": "2026년 경상북도개발공사 SNS 기자단 모집(블로그, 숏폼, 사진 기자)",
+      "title": "2026년 세계유방암학술대회 및 한국유방암학회 학술대회",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603110009",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040510001&str_no=202603120025",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "2026년 제4기 장애인 건강지킴이 「단디(DANDI) 서포터즈 모집",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603130001",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "[Campus D 서울 SF클럽] 첫 번째 감상회 초대",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603130002",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "IFEZ 글로벌 기자단 3기",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603170065",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "이랜드 스파오 크리에이터 2기 / 챌린저스 1기 모집",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603170067",
       "thumb": "",
       "source": "공모전대통령"
     }
