@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026년 03월 24일 11:44 (KST)",
-  "count": 21,
+  "updated_at": "2026년 03월 25일 11:49 (KST)",
+  "count": 20,
   "contests": [
     {
       "title": "대교 눈높이 캐릭터 공모전",
@@ -25,13 +25,13 @@
       "source": "공모전대통령"
     },
     {
-      "title": "<춘천 한 문장, 봄내글판> 전국 공모전",
+      "title": "2026 리디아 시선집 공모전",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603110032",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603190047",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -43,28 +43,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603160026",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "'2026 에덴벚꽃길 벚꽃축제' 오픈 스테이지 참가 공모전",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202603140006",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "한국 어린이 작가협회 -글리버 어린이 작가단 2기 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603140023",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -91,24 +69,13 @@
       "source": "공모전대통령"
     },
     {
-      "title": "광명상생플랫폼 명칭 공모전",
+      "title": "2026고양국제꽃박람회 생성형 AI 숏폼 영상 대국민 공모전",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603180024",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "2026 리디아 시선집 공모전",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603190047",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202603200061",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -120,6 +87,28 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603150011",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "안성 동신일반산단 명칭 공모",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603170043",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "제66회 경남도민체육대회 상징물 공모",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603190027",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -168,28 +157,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "제1기 KHIS 온라인 정보공개 모니터링단 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040310001&str_no=202603180073",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "IFEZ 글로벌 기자단 3기",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603170065",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
       "title": "마니커에프앤지 꼬꼬단 6기 모집",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -197,17 +164,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603180002",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "2026 매뉴콘 기업 선정 최종 라운드 시민평가단 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040310001&str_no=202603130044",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -223,6 +179,28 @@
       "source": "공모전대통령"
     },
     {
+      "title": "IFEZ 글로벌 기자단 3기",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603170065",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "제1기 KHIS 온라인 정보공개 모니터링단 모집",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040310001&str_no=202603180073",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
       "title": "[한국인터넷진흥원 KISA] 2026 인터넷거버넌스 국제포럼 활동단 모집",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -230,6 +208,17 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603180058",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "제1회 K-Culture Expo",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040510001&str_no=202603200068",
       "thumb": "",
       "source": "공모전대통령"
     }
