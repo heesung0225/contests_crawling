@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026년 03월 27일 12:17 (KST)",
+  "updated_at": "2026년 03월 28일 11:48 (KST)",
   "count": 20,
   "contests": [
     {
@@ -47,13 +47,13 @@
       "source": "공모전대통령"
     },
     {
-      "title": "인구감소지역 청소년 성장지원 사업 별칭(네이밍)공모전",
+      "title": "「2026태안국제원예치유박람회」 치유가요제",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603170030",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202603160024",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -65,17 +65,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603190027",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "「2026태안국제원예치유박람회」 치유가요제",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030910001&str_no=202603160024",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -102,6 +91,17 @@
       "source": "공모전대통령"
     },
     {
+      "title": "제1회 워크하우스컴퍼니 시나리오 공모전",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603050016",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
       "title": "제1회 K-photo 국제사진공모전",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -109,17 +109,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202603180039",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "이랜드 스파오 크리에이터 2기 / 챌린저스 1기 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603170067",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -190,17 +179,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "IFEZ 글로벌 기자단 3기",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603170065",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
       "title": "[한국인터넷진흥원 KISA] 2026 인터넷거버넌스 국제포럼 활동단 모집",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -219,6 +197,28 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603190037",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "블로그가 포트폴리오가 되는 취준 블로그 마스터즈",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603190039",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "2026 발룬치어링 참여 동아리 모집",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603200009",
       "thumb": "",
       "source": "공모전대통령"
     }
