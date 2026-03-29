@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026년 03월 28일 11:48 (KST)",
+  "updated_at": "2026년 03월 29일 12:22 (KST)",
   "count": 20,
   "contests": [
     {
@@ -21,17 +21,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603190047",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "시전문계간지 신생 제3회 신인상 공모",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603160037",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -58,17 +47,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "제66회 경남도민체육대회 상징물 공모",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603190027",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
       "title": "2026 제34회 대산청소년문학상 작품공모",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -80,13 +58,13 @@
       "source": "공모전대통령"
     },
     {
-      "title": "'불법사금융 피해 원스톱 지원' 대국민 슬로건 공모전",
+      "title": "제66회 경남도민체육대회 상징물 공모",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603230038",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603190027",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -102,13 +80,35 @@
       "source": "공모전대통령"
     },
     {
-      "title": "제1회 K-photo 국제사진공모전",
+      "title": "'불법사금융 피해 원스톱 지원' 대국민 슬로건 공모전",
       "host": "-",
       "category": "IT·컴퓨터",
       "dday": "",
       "dday_num": 9999,
       "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=031210001&str_no=202603180039",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603230038",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "국제 어린이 및 청소년 미술 공모전",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603190055",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "제1회 윤동주동시문학상 공모",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603160035",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -135,39 +135,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "제1기 KHIS 온라인 정보공개 모니터링단 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040310001&str_no=202603180073",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "AI 애니메이션 영상으로 데뷔하실 감독님을 찾습니다.",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040610001&str_no=202603180065",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "마니커에프앤지 꼬꼬단 6기 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603180002",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
       "title": "제1회 K-Culture Expo",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -175,17 +142,6 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040510001&str_no=202603200068",
-      "thumb": "",
-      "source": "공모전대통령"
-    },
-    {
-      "title": "[한국인터넷진흥원 KISA] 2026 인터넷거버넌스 국제포럼 활동단 모집",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040410001&str_no=202603180058",
       "thumb": "",
       "source": "공모전대통령"
     },
@@ -219,6 +175,50 @@
       "dday_num": 9999,
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603200009",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "AI를 활용한 R&D기획 분야 인턴-정규직 전환 연계 프로그램",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603250028",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "2026년 가축위생방역지원본부 서포터즈 모집공고",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603260036",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "제2회 부산 골목가게 시민사진가 모집",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603250012",
+      "thumb": "",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "스타트업/세일즈/창업/전략기획 오퍼즈 서포터즈 1기 모집",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603190028",
       "thumb": "",
       "source": "공모전대통령"
     }
