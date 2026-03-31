@@ -9,44 +9,51 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
-      background: #07060f;
-      color: #f0f0f8;
+      background: #dde8f8;
+      color: #1a1d2e;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ── 배경 오브 ── */
+    /* ── 배경 오브 (연한 파스텔) ── */
     .bg {
       position: fixed;
       inset: 0;
       z-index: 0;
       overflow: hidden;
+      background: linear-gradient(145deg, #e8eeff 0%, #dce8f9 40%, #e4eeff 100%);
     }
     .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.55;
-      animation: drift 22s ease-in-out infinite;
+      filter: blur(100px);
+      opacity: 0.45;
+      animation: drift 24s ease-in-out infinite;
     }
-    .orb-1 { width: 640px; height: 640px; background: radial-gradient(circle, #6d28d9, #4f46e5); top: -180px; left: -120px; animation-delay: 0s; }
-    .orb-2 { width: 520px; height: 520px; background: radial-gradient(circle, #1d4ed8, #0891b2); top: 150px; right: -80px; animation-delay: -8s; }
-    .orb-3 { width: 420px; height: 420px; background: radial-gradient(circle, #0e7490, #6d28d9); bottom: -60px; left: 28%; animation-delay: -15s; }
-    .orb-4 { width: 300px; height: 300px; background: radial-gradient(circle, #7c3aed, #db2777); bottom: 180px; right: 18%; animation-delay: -5s; }
+    .orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, #a5b4fc, #c4b5fd); top: -200px; left: -150px; animation-delay: 0s; }
+    .orb-2 { width: 560px; height: 560px; background: radial-gradient(circle, #93c5fd, #bfdbfe); top: 100px; right: -100px; animation-delay: -8s; }
+    .orb-3 { width: 460px; height: 460px; background: radial-gradient(circle, #6ee7f7, #a5f3fc); bottom: -80px; left: 25%; animation-delay: -16s; }
+    .orb-4 { width: 340px; height: 340px; background: radial-gradient(circle, #f0abfc, #e879f9); bottom: 160px; right: 15%; animation-delay: -5s; }
 
     @keyframes drift {
       0%,100% { transform: translate(0,0) scale(1); }
-      33%      { transform: translate(28px,-28px) scale(1.06); }
-      66%      { transform: translate(-18px,18px) scale(0.95); }
+      33%      { transform: translate(30px,-25px) scale(1.05); }
+      66%      { transform: translate(-20px,20px) scale(0.96); }
     }
 
-    /* ── 공통 글라스 ── */
-    .glass {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.22);
+    /* ── 마우스 커서 스포트라이트 ── */
+    .cursor-glow {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        480px circle at var(--cx, -999px) var(--cy, -999px),
+        rgba(99,102,241,0.10) 0%,
+        rgba(139,92,246,0.06) 35%,
+        transparent 65%
+      );
+      transition: background 0.05s;
     }
 
     /* ── 페이지 레이어 ── */
@@ -54,18 +61,21 @@
 
     /* ── 헤더 ── */
     header {
-      padding: 3.2rem 1.5rem 2.8rem;
+      padding: 3rem 1.5rem 2.6rem;
       text-align: center;
     }
     .header-card {
       display: inline-block;
-      background: rgba(255,255,255,0.09);
-      backdrop-filter: blur(40px) saturate(200%);
-      -webkit-backdrop-filter: blur(40px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.85);
       border-radius: 30px;
       padding: 2.2rem 3.2rem;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.35), inset 0 1.5px 0 rgba(255,255,255,0.28);
+      box-shadow:
+        0 8px 32px rgba(100,120,200,0.12),
+        0 2px 8px rgba(100,120,200,0.08),
+        inset 0 1.5px 0 rgba(255,255,255,0.9);
       position: relative;
       overflow: hidden;
     }
@@ -73,7 +83,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, rgba(255,255,255,0.12) 0%, transparent 55%);
+      background: linear-gradient(155deg, rgba(255,255,255,0.5) 0%, transparent 50%);
       border-radius: inherit;
       pointer-events: none;
     }
@@ -81,29 +91,29 @@
       font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: -0.8px;
-      background: linear-gradient(140deg, #fff 30%, rgba(180,180,255,0.75));
+      background: linear-gradient(135deg, #3730a3 0%, #6d28d9 60%, #0284c7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     header p {
       margin-top: 0.45rem;
-      color: rgba(255,255,255,0.55);
+      color: rgba(30,30,80,0.5);
       font-size: 0.9rem;
     }
     .update-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      margin-top: 1.1rem;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
+      margin-top: 1rem;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.85);
       padding: 0.32rem 1rem;
       border-radius: 999px;
       font-size: 0.76rem;
-      color: rgba(255,255,255,0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      color: rgba(30,30,80,0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     /* ── 컨테이너 ── */
@@ -124,19 +134,19 @@
     }
     .count {
       font-size: 0.86rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(30,30,80,0.5);
     }
-    .count strong { color: rgba(255,255,255,0.88); }
+    .count strong { color: rgba(30,30,80,0.8); }
 
     .sort-group {
       display: flex;
-      gap: 0;
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.55);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
-      border: 1px solid rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.8);
       border-radius: 999px;
       padding: 0.28rem;
+      box-shadow: 0 2px 12px rgba(100,120,200,0.1);
     }
     .sort-btn {
       padding: 0.38rem 1.05rem;
@@ -144,17 +154,17 @@
       border-radius: 999px;
       background: transparent;
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.55);
+      color: rgba(30,30,80,0.5);
       cursor: pointer;
       transition: all 0.18s;
       white-space: nowrap;
     }
-    .sort-btn:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); }
+    .sort-btn:hover { color: #3730a3; background: rgba(255,255,255,0.5); }
     .sort-btn.active {
-      background: rgba(255,255,255,0.18);
-      color: #fff;
+      background: rgba(255,255,255,0.85);
+      color: #3730a3;
       font-weight: 600;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.28);
+      box-shadow: 0 2px 10px rgba(100,120,200,0.15), inset 0 1px 0 rgba(255,255,255,1);
     }
 
     /* ── 그리드 ── */
@@ -166,31 +176,55 @@
 
     /* ── 카드 ── */
     .card {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.8);
       border-radius: 22px;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.18);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow:
+        0 4px 20px rgba(100,120,200,0.10),
+        0 1px 4px rgba(100,120,200,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.95);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
       display: flex;
       flex-direction: column;
       position: relative;
+      will-change: transform;
     }
+    /* 상단 하이라이트 */
     .card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 45%;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.07), transparent);
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.45), transparent);
       border-radius: 22px 22px 0 0;
       pointer-events: none;
       z-index: 1;
     }
+    /* 마우스 반사광 */
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        220px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255,255,255,0.32) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.22s;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .card:hover::after { opacity: 1; }
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.24);
+      box-shadow:
+        0 12px 40px rgba(100,120,200,0.18),
+        0 2px 8px rgba(100,120,200,0.10),
+        inset 0 1px 0 rgba(255,255,255,1);
     }
 
     .card-img {
@@ -202,7 +236,7 @@
     .card-img-placeholder {
       width: 100%;
       height: 164px;
-      background: linear-gradient(135deg, rgba(79,70,229,0.35), rgba(8,145,178,0.35));
+      background: linear-gradient(135deg, rgba(165,180,252,0.4), rgba(147,197,253,0.4));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -216,26 +250,26 @@
       gap: 0.48rem;
       flex: 1;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
     .card-top { display: flex; gap: 0.3rem; flex-wrap: wrap; align-items: center; }
     .card-title {
       font-size: 0.91rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.9);
+      color: #1e1b4b;
       text-decoration: none;
       line-height: 1.5;
       display: block;
     }
-    .card-title:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-    .card-category { font-size: 0.73rem; color: rgba(255,255,255,0.38); }
-    .card-host { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .card-title:hover { color: #3730a3; text-decoration: underline; text-underline-offset: 3px; }
+    .card-category { font-size: 0.73rem; color: rgba(30,27,75,0.38); }
+    .card-host { font-size: 0.8rem; color: rgba(30,27,75,0.5); }
     .card-deadline {
       margin-top: auto;
       padding-top: 0.6rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(100,120,200,0.1);
       font-size: 0.77rem;
-      color: rgba(255,255,255,0.45);
+      color: rgba(30,27,75,0.45);
     }
 
     /* ── 배지 ── */
@@ -245,18 +279,16 @@
       padding: 0.19rem 0.58rem;
       border-radius: 999px;
       white-space: nowrap;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
     }
-    .badge-urgent  { background: rgba(239,68,68,0.22);  border: 1px solid rgba(239,68,68,0.38);  color: #fca5a5; }
-    .badge-normal  { background: rgba(59,130,246,0.2);  border: 1px solid rgba(59,130,246,0.35); color: #93c5fd; }
-    .badge-done    { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.38); }
-    .badge-status  { background: rgba(34,197,94,0.18);  border: 1px solid rgba(34,197,94,0.32);  color: #86efac; }
-    .badge-source  { background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.6); }
+    .badge-urgent  { background: rgba(239,68,68,0.12);  border: 1px solid rgba(239,68,68,0.25);  color: #dc2626; }
+    .badge-normal  { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); color: #2563eb; }
+    .badge-done    { background: rgba(0,0,0,0.05);      border: 1px solid rgba(0,0,0,0.1);       color: rgba(30,27,75,0.4); }
+    .badge-status  { background: rgba(34,197,94,0.12);  border: 1px solid rgba(34,197,94,0.25);  color: #16a34a; }
+    .badge-source  { background: rgba(255,255,255,0.7); border: 1px solid rgba(100,120,200,0.2); color: rgba(30,27,75,0.55); }
 
     .no-results {
       text-align: center;
-      color: rgba(255,255,255,0.3);
+      color: rgba(30,27,75,0.35);
       padding: 5rem 1rem;
       grid-column: 1 / -1;
     }
@@ -266,13 +298,13 @@
       text-align: center;
       padding: 3rem 1rem;
       font-size: 0.77rem;
-      color: rgba(255,255,255,0.28);
+      color: rgba(30,27,75,0.35);
       line-height: 2.2;
       position: relative;
       z-index: 1;
     }
-    footer a { color: rgba(147,197,253,0.65); text-decoration: none; }
-    footer a:hover { color: #93c5fd; }
+    footer a { color: #6366f1; text-decoration: none; }
+    footer a:hover { color: #4338ca; }
   </style>
 </head>
 <body>
@@ -283,13 +315,14 @@
     <div class="orb orb-3"></div>
     <div class="orb orb-4"></div>
   </div>
+  <div class="cursor-glow" id="cursorGlow"></div>
 
   <div class="page">
     <header>
       <div class="header-card">
         <h1>💻 IT 공모전 Daily</h1>
         <p>IT·소프트웨어 분야 공모전 정보를 매일 자동 수집합니다</p>
-        <div class="update-badge">🔄 마지막 업데이트: 2026년 03월 31일 11:29 (KST)</div>
+        <div class="update-badge">🔄 마지막 업데이트: 2026년 03월 31일 11:40 (KST)</div>
       </div>
     </header>
 
@@ -314,7 +347,40 @@
   </div>
 
   <script>
-    const ALL_CONTESTS = [{"title": "제13회 산업안전보건 조사자료 논문 경진대회", "host": "한국산업안전보건공단 산업안전보건연구원", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 대외활동/서포터즈, 기타", "dday": "D-62", "dday_num": 62, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105566", "thumb": "https://www.wevity.com/upload/contest/20260310002247_8635db02.jpg", "source": "위비티"}, {"title": "제7기 과기정통부 LMO SAFETY 기자단 모집", "host": "과학기술정보통신부", "category": "분야 : 광고/마케팅, 논문/리포트, 영상/UCC/사진, 디자인/캐릭터/웹툰, 과학/공학, 대외활동/서포터즈", "dday": "D-6", "dday_num": 6, "status": "마감임박", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105517", "thumb": "https://www.wevity.com/upload/contest/20260309004822_3d9c9eac.jpg", "source": "위비티"}, {"title": "제10회 소비자지향성 개선과제 공모전", "host": "공정거래위원회", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 예체능/미술/음악, 기타", "dday": "D-77", "dday_num": 77, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105362", "thumb": "https://www.wevity.com/upload/contest/20260302235747_3061936b.jpg", "source": "위비티"}, {"title": "[산업통상부] 2026 엔지니어링산업 경진대회", "host": "산업통상부", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 건축/건설/인테리어", "dday": "D-31", "dday_num": 31, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105361", "thumb": "https://www.wevity.com/upload/contest/20260302222544_5bab69a5.jpg", "source": "위비티"}, {"title": "2026년 전국 통합데이터 활용 공모전", "host": "행정안전부", "category": "분야 : 웹/모바일/IT", "dday": "D-13", "dday_num": 13, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106137", "thumb": "https://www.wevity.com/upload/contest/20260330190445_0b8b424c.jpg", "source": "위비티"}, {"title": "2026년 영남알프스 고헌산 사진 공모전", "host": "울주군", "category": "분야 : 영상/UCC/사진", "dday": "D-11", "dday_num": 11, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106135", "thumb": "https://www.wevity.com/upload/contest/20260330184756_942c5476.jpg", "source": "위비티"}, {"title": "2026년 제18회 경북여성 창업아이디어 경진대회", "host": "경상북도", "category": "분야 : 취업/창업", "dday": "D-25", "dday_num": 25, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106134", "thumb": "https://www.wevity.com/upload/contest/20260330184533_1231f2a1.jpg", "source": "위비티"}, {"title": "제 1회 동춘당·김호연재 전국휘호대회", "host": "지방자치단체", "category": "분야 : 문학/글/시나리오", "dday": "D-156", "dday_num": 156, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106121", "thumb": "https://www.wevity.com/upload/contest/20260330163818_db367fa7.jpg", "source": "위비티"}, {"title": "2026 대전 0시 축제 로고송 공모전", "host": "대전광역시", "category": "분야 : 예체능/미술/음악", "dday": "D-18", "dday_num": 18, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106119", "thumb": "https://www.wevity.com/upload/contest/20260330160717_ab97728e.jpg", "source": "위비티"}, {"title": "2026년 제3회 전국김밥경연대회", "host": "경기도", "category": "분야 : 예체능/미술/음악", "dday": "D-24", "dday_num": 24, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106113", "thumb": "https://www.wevity.com/upload/contest/20260330154807_eeaa0b1f.jpg", "source": "위비티"}, {"title": "제5회 영천시 공공데이터•AI 활용 창업 경진대회", "host": "영천시", "category": "분야 : 취업/창업", "dday": "D-46", "dday_num": 46, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106111", "thumb": "https://www.wevity.com/upload/contest/20260330151315_c74d881f.jpg", "source": "위비티"}, {"title": "2026 한국도로공사 전북본부 교통안전 이모티콘 공모전", "host": "한국도로공사 전북본부", "category": "분야 : 예체능/미술/음악", "dday": "D-18", "dday_num": 18, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106109", "thumb": "https://www.wevity.com/upload/contest/20260330144138_8d0209db.jpg", "source": "위비티"}, {"title": "2026년 성평등가족부 공공·AI 데이터 융복합 아이디어 및 분석활용 공모전", "host": "성평등가족부", "category": "분야 : 기획/아이디어", "dday": "D-35", "dday_num": 35, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106102", "thumb": "https://www.wevity.com/upload/contest/20260330130621_8006f862.jpg", "source": "위비티"}, {"title": "2026 국가유산 방문 캠페인 서포터즈 4기 모집", "host": "국가유산청", "category": "분야 : 대외활동/서포터즈", "dday": "D-3", "dday_num": 3, "status": "마감임박", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106094", "thumb": "https://www.wevity.com/upload/contest/20260328005458_f011e2bb.jpg", "source": "위비티"}, {"title": "2026년 인공지능 루키 대회", "host": "과학기술정보통신부", "category": "분야 : 과학/공학", "dday": "D-39", "dday_num": 39, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106091", "thumb": "https://www.wevity.com/upload/contest/20260328002233_15820618.jpg", "source": "위비티"}, {"title": "대교 눈높이 캐릭터 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603180064", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603230711405342276.jpg", "source": "공모전대통령"}, {"title": "제1회 워크하우스컴퍼니 시나리오 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603050016", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231408026599230.jpg", "source": "공모전대통령"}, {"title": "'불법사금융 피해 원스톱 지원' 대국민 슬로건 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603230038", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231302552556947.png", "source": "공모전대통령"}, {"title": "제24회 퇴촌토마토축제 표어(슬로건) 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603260008", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603261308405316735.png", "source": "공모전대통령"}, {"title": "한국해외인프라도시개발지원공사(KIND) 캐릭터 네이밍 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603270051", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271557051496531.png", "source": "공모전대통령"}, {"title": "15분도시 안전통학로 명칭 시민공모", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603230025", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231419360267398.png", "source": "공모전대통령"}, {"title": "[노인권익증진사업] 노인 명칭 이름 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603240017", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603241435210072839.jpg", "source": "공모전대통령"}, {"title": "세상에 무가치함은 없다 - 2026 픽셀모먼트 에세이 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603270034", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271416531719537.jpeg", "source": "공모전대통령"}, {"title": "워라밸+4.5 프로젝트 「워라밸 삼행시」", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603250053", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251601591214994.png", "source": "공모전대통령"}, {"title": "제10회 엘릭시르 미스터리 대상 공모", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603200023", "thumb": "http://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털.jpg", "source": "공모전대통령"}, {"title": "[한국문화예술위원회] 아르코 썸 페스타 홍보 서포터즈 아썸즈 2기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603250015", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251141536553115.jpg", "source": "공모전대통령"}, {"title": "AI를 활용한 R&D기획 분야 인턴-정규직 전환 연계 프로그램", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603250028", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251326001906425.jpg", "source": "공모전대통령"}, {"title": "2026년 가축위생방역지원본부 서포터즈 모집공고", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603260036", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603261436505088938.png", "source": "공모전대통령"}, {"title": "2026 김치 스타트업 아이디어 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=040710001&str_no=202603260028", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603261411009001807.jpg", "source": "공모전대통령"}, {"title": "2026년 Y S.D Maker 국제교류 활동 인원 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603270046", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271500460219091.png", "source": "공모전대통령"}, {"title": "제2회 부산 골목가게 시민사진가 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603250012", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251025036343942.jpg", "source": "공모전대통령"}, {"title": "필드 리서치 : 농촌의 기회", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040710001&str_no=202603230068", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231547127360797.png", "source": "공모전대통령"}, {"title": "국가유산 방문 캠페인 서포터즈 4기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603270059", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271817371078378.png", "source": "공모전대통령"}, {"title": "[남구종합사회복지관] 2026 친환경 서포터즈 그리니(Greeny) 2기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603230019", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231117262859440.jpg", "source": "공모전대통령"}, {"title": "스테이 풀무원 참가자 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603160052", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251402177974756.jpg", "source": "공모전대통령"}];
+    const ALL_CONTESTS = [{"title": "제13회 산업안전보건 조사자료 논문 경진대회", "host": "한국산업안전보건공단 산업안전보건연구원", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 대외활동/서포터즈, 기타", "dday": "D-62", "dday_num": 62, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105566", "thumb": "https://www.wevity.com/upload/contest/20260310002247_8635db02.jpg", "source": "위비티"}, {"title": "제7기 과기정통부 LMO SAFETY 기자단 모집", "host": "과학기술정보통신부", "category": "분야 : 광고/마케팅, 논문/리포트, 영상/UCC/사진, 디자인/캐릭터/웹툰, 과학/공학, 대외활동/서포터즈", "dday": "D-6", "dday_num": 6, "status": "마감임박", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105517", "thumb": "https://www.wevity.com/upload/contest/20260309004822_3d9c9eac.jpg", "source": "위비티"}, {"title": "제10회 소비자지향성 개선과제 공모전", "host": "공정거래위원회", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 예체능/미술/음악, 기타", "dday": "D-77", "dday_num": 77, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105362", "thumb": "https://www.wevity.com/upload/contest/20260302235747_3061936b.jpg", "source": "위비티"}, {"title": "[산업통상부] 2026 엔지니어링산업 경진대회", "host": "산업통상부", "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 건축/건설/인테리어", "dday": "D-31", "dday_num": 31, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105361", "thumb": "https://www.wevity.com/upload/contest/20260302222544_5bab69a5.jpg", "source": "위비티"}, {"title": "2026년 전국 통합데이터 활용 공모전", "host": "행정안전부", "category": "분야 : 웹/모바일/IT", "dday": "D-13", "dday_num": 13, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106137", "thumb": "https://www.wevity.com/upload/contest/20260330190445_0b8b424c.jpg", "source": "위비티"}, {"title": "2026년 영남알프스 고헌산 사진 공모전", "host": "울주군", "category": "분야 : 영상/UCC/사진", "dday": "D-11", "dday_num": 11, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106135", "thumb": "https://www.wevity.com/upload/contest/20260330184756_942c5476.jpg", "source": "위비티"}, {"title": "2026년 제18회 경북여성 창업아이디어 경진대회", "host": "경상북도", "category": "분야 : 취업/창업", "dday": "D-25", "dday_num": 25, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106134", "thumb": "https://www.wevity.com/upload/contest/20260330184533_1231f2a1.jpg", "source": "위비티"}, {"title": "제 1회 동춘당·김호연재 전국휘호대회", "host": "지방자치단체", "category": "분야 : 문학/글/시나리오", "dday": "D-156", "dday_num": 156, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106121", "thumb": "https://www.wevity.com/upload/contest/20260330163818_db367fa7.jpg", "source": "위비티"}, {"title": "2026 대전 0시 축제 로고송 공모전", "host": "대전광역시", "category": "분야 : 예체능/미술/음악", "dday": "D-18", "dday_num": 18, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106119", "thumb": "https://www.wevity.com/upload/contest/20260330160717_ab97728e.jpg", "source": "위비티"}, {"title": "2026년 제3회 전국김밥경연대회", "host": "경기도", "category": "분야 : 예체능/미술/음악", "dday": "D-24", "dday_num": 24, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106113", "thumb": "https://www.wevity.com/upload/contest/20260330154807_eeaa0b1f.jpg", "source": "위비티"}, {"title": "제5회 영천시 공공데이터•AI 활용 창업 경진대회", "host": "영천시", "category": "분야 : 취업/창업", "dday": "D-46", "dday_num": 46, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106111", "thumb": "https://www.wevity.com/upload/contest/20260330151315_c74d881f.jpg", "source": "위비티"}, {"title": "2026 한국도로공사 전북본부 교통안전 이모티콘 공모전", "host": "한국도로공사 전북본부", "category": "분야 : 예체능/미술/음악", "dday": "D-18", "dday_num": 18, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106109", "thumb": "https://www.wevity.com/upload/contest/20260330144138_8d0209db.jpg", "source": "위비티"}, {"title": "2026년 성평등가족부 공공·AI 데이터 융복합 아이디어 및 분석활용 공모전", "host": "성평등가족부", "category": "분야 : 기획/아이디어", "dday": "D-35", "dday_num": 35, "status": "접수예정", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106102", "thumb": "https://www.wevity.com/upload/contest/20260330130621_8006f862.jpg", "source": "위비티"}, {"title": "2026 국가유산 방문 캠페인 서포터즈 4기 모집", "host": "국가유산청", "category": "분야 : 대외활동/서포터즈", "dday": "D-3", "dday_num": 3, "status": "마감임박", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106094", "thumb": "https://www.wevity.com/upload/contest/20260328005458_f011e2bb.jpg", "source": "위비티"}, {"title": "2026년 인공지능 루키 대회", "host": "과학기술정보통신부", "category": "분야 : 과학/공학", "dday": "D-39", "dday_num": 39, "status": "접수중", "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106091", "thumb": "https://www.wevity.com/upload/contest/20260328002233_15820618.jpg", "source": "위비티"}, {"title": "대교 눈높이 캐릭터 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030610001&str_no=202603180064", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603230711405342276.jpg", "source": "공모전대통령"}, {"title": "제1회 워크하우스컴퍼니 시나리오 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603050016", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231408026599230.jpg", "source": "공모전대통령"}, {"title": "'불법사금융 피해 원스톱 지원' 대국민 슬로건 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603230038", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231302552556947.png", "source": "공모전대통령"}, {"title": "제24회 퇴촌토마토축제 표어(슬로건) 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603260008", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603261308405316735.png", "source": "공모전대통령"}, {"title": "한국해외인프라도시개발지원공사(KIND) 캐릭터 네이밍 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603270051", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271557051496531.png", "source": "공모전대통령"}, {"title": "15분도시 안전통학로 명칭 시민공모", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603230025", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231419360267398.png", "source": "공모전대통령"}, {"title": "[노인권익증진사업] 노인 명칭 이름 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030210001&str_no=202603240017", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603241435210072839.jpg", "source": "공모전대통령"}, {"title": "세상에 무가치함은 없다 - 2026 픽셀모먼트 에세이 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603270034", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271416531719537.jpeg", "source": "공모전대통령"}, {"title": "워라밸+4.5 프로젝트 「워라밸 삼행시」", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603250053", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251601591214994.png", "source": "공모전대통령"}, {"title": "제10회 엘릭시르 미스터리 대상 공모", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030110001&str_no=202603200023", "thumb": "http://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털.jpg", "source": "공모전대통령"}, {"title": "[한국문화예술위원회] 아르코 썸 페스타 홍보 서포터즈 아썸즈 2기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603250015", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251141536553115.jpg", "source": "공모전대통령"}, {"title": "AI를 활용한 R&D기획 분야 인턴-정규직 전환 연계 프로그램", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603250028", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251326001906425.jpg", "source": "공모전대통령"}, {"title": "2026년 가축위생방역지원본부 서포터즈 모집공고", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603260036", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603261436505088938.png", "source": "공모전대통령"}, {"title": "2026 김치 스타트업 아이디어 공모전", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=040710001&str_no=202603260028", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603261411009001807.jpg", "source": "공모전대통령"}, {"title": "2026년 Y S.D Maker 국제교류 활동 인원 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603270046", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271500460219091.png", "source": "공모전대통령"}, {"title": "제2회 부산 골목가게 시민사진가 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603250012", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251025036343942.jpg", "source": "공모전대통령"}, {"title": "국가유산 방문 캠페인 서포터즈 4기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603270059", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271817371078378.png", "source": "공모전대통령"}, {"title": "필드 리서치 : 농촌의 기회", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040710001&str_no=202603230068", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231547127360797.png", "source": "공모전대통령"}, {"title": "[남구종합사회복지관] 2026 친환경 서포터즈 그리니(Greeny) 2기 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603230019", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231117262859440.jpg", "source": "공모전대통령"}, {"title": "스테이 풀무원 참가자 모집", "host": "-", "category": "IT·컴퓨터", "dday": "", "dday_num": 9999, "status": "접수중", "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040210001&str_no=202603160052", "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603251402177974756.jpg", "source": "공모전대통령"}];
+
+    /* ── 전역 커서 스포트라이트 ── */
+    document.addEventListener('mousemove', (e) => {
+      document.documentElement.style.setProperty('--cx', e.clientX + 'px');
+      document.documentElement.style.setProperty('--cy', e.clientY + 'px');
+      document.getElementById('cursorGlow').style.background =
+        `radial-gradient(480px circle at ${e.clientX}px ${e.clientY}px,
+          rgba(99,102,241,0.10) 0%,
+          rgba(139,92,246,0.06) 35%,
+          transparent 65%)`;
+    });
+
+    /* ── 카드별 반사광 + 3D 틸트 ── */
+    function initCards() {
+      document.getElementById('grid').addEventListener('mousemove', (e) => {
+        const card = e.target.closest('.card');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const cx = x / r.width;
+        const cy = y / r.height;
+        card.style.setProperty('--mx', (cx * 100) + '%');
+        card.style.setProperty('--my', (cy * 100) + '%');
+        const rx = (cy - 0.5) * -10;
+        const ry = (cx - 0.5) *  10;
+        card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+      });
+      document.getElementById('grid').addEventListener('mouseleave', (e) => {
+        const card = e.target.closest('.card');
+        if (card) card.style.transform = '';
+      }, true);
+    }
 
     function getDdayBadge(dday, ddayNum) {
       if (!dday) return '';
@@ -328,13 +394,11 @@
       const imgHtml = c.thumb
         ? `<img class="card-img" src="${c.thumb}" alt="${c.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>💻</div>'">`
         : `<div class="card-img-placeholder">💻</div>`;
-
-      const ddayBadge  = getDdayBadge(c.dday, c.dday_num);
+      const ddayBadge   = getDdayBadge(c.dday, c.dday_num);
       const statusBadge = c.status ? `<span class="badge badge-status">${c.status}</span>` : '';
       const sourceBadge = `<span class="badge badge-source">${c.source}</span>`;
       const categoryHtml = c.category ? `<p class="card-category">${c.category}</p>` : '';
       const deadlineHtml = c.dday ? `<div class="card-deadline">⏰ 마감: ${c.dday}</div>` : '';
-
       return `
         <div class="card">
           ${imgHtml}
@@ -348,20 +412,22 @@
         </div>`;
     }
 
+    function render(list) {
+      document.getElementById('grid').innerHTML = list.map(renderCard).join('');
+    }
+
     function sortContests(mode, e) {
       document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
-
       let sorted = [...ALL_CONTESTS];
-      if (mode === 'dday')   sorted.sort((a, b) => a.dday_num - b.dday_num);
+      if (mode === 'dday')  sorted.sort((a, b) => a.dday_num - b.dday_num);
       else if (mode === 'title') sorted.sort((a, b) => a.title.localeCompare(b.title, 'ko'));
-
-      document.getElementById('grid').innerHTML = sorted.map(renderCard).join('');
+      render(sorted);
     }
 
     (function () {
-      const sorted = [...ALL_CONTESTS].sort((a, b) => a.dday_num - b.dday_num);
-      document.getElementById('grid').innerHTML = sorted.map(renderCard).join('');
+      render([...ALL_CONTESTS].sort((a, b) => a.dday_num - b.dday_num));
+      initCards();
     })();
   </script>
 </body>

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026년 03월 31일 11:29 (KST)",
+  "updated_at": "2026년 03월 31일 11:40 (KST)",
   "count": 35,
   "contests": [
     {
@@ -344,17 +344,6 @@
       "source": "공모전대통령"
     },
     {
-      "title": "필드 리서치 : 농촌의 기회",
-      "host": "-",
-      "category": "IT·컴퓨터",
-      "dday": "",
-      "dday_num": 9999,
-      "status": "접수중",
-      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040710001&str_no=202603230068",
-      "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231547127360797.png",
-      "source": "공모전대통령"
-    },
-    {
       "title": "국가유산 방문 캠페인 서포터즈 4기 모집",
       "host": "-",
       "category": "IT·컴퓨터",
@@ -363,6 +352,17 @@
       "status": "접수중",
       "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040110001&str_no=202603270059",
       "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603271817371078378.png",
+      "source": "공모전대통령"
+    },
+    {
+      "title": "필드 리서치 : 농촌의 기회",
+      "host": "-",
+      "category": "IT·컴퓨터",
+      "dday": "",
+      "dday_num": 9999,
+      "status": "접수중",
+      "link": "https://www.contestkorea.com/sub/view.php?int_gbn=2&Txt_bcode=040710001&str_no=202603230068",
+      "thumb": "http://www.contestkorea.com/admincenter/files/meet/202603231547127360797.png",
       "source": "공모전대통령"
     },
     {
