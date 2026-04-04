@@ -118,7 +118,7 @@ def scrape_wevity():
 
 
 def get_contestkorea_detail(url: str) -> dict:
-    """공모전대통령 상세 페이지에서 썸네일·D-day·상태·주최 한 번에 수집"""
+    """콘테스트코리아 상세 페이지에서 썸네일·D-day·상태·주최 한 번에 수집"""
     result = {"thumb": "", "dday": "", "dday_num": 9999, "status": "접수중", "host": "-"}
     try:
         res = SESSION.get(url, timeout=8)
@@ -167,7 +167,7 @@ def get_contestkorea_detail(url: str) -> dict:
 
 
 def scrape_contestkorea():
-    """공모전 대통령 IT 공모전 크롤링"""
+    """콘테스트코리아 IT 공모전 크롤링"""
     contests = []
     url = "https://www.contestkorea.com/sub/list.php?int_gbn=1&Txt_bcode=030310"
 
@@ -201,13 +201,80 @@ def scrape_contestkorea():
                     "status": detail["status"],
                     "link": detail_url,
                     "thumb": detail["thumb"],
-                    "source": "공모전대통령",
+                    "source": "콘테스트코리아",
                 })
             except Exception:
                 continue
 
     except Exception as e:
         print(f"[contestkorea] error: {e}")
+
+    return contests
+
+
+def scrape_linkareer():
+    """링커리어 공모전 크롤링 (GraphQL API)"""
+    contests = []
+    url = "https://api.linkareer.com/graphql"
+    query = """{ activities(filterBy: {activityTypeIDs: [3]}) {
+      nodes {
+        id title organizationName
+        posterImage { url }
+        recruitCloseAt deadlineStatus
+      }
+    } }"""
+    try:
+        res = SESSION.post(url, json={"query": query}, timeout=10)
+        res.raise_for_status()
+        nodes = res.json().get("data", {}).get("activities", {}).get("nodes", [])
+
+        today = datetime.now(KST).date()
+        for node in nodes:
+            try:
+                title = node.get("title", "").strip()
+                if not title:
+                    continue
+
+                host = node.get("organizationName") or "-"
+                detail_url = f"https://linkareer.com/activity/{node['id']}"
+
+                thumb = ""
+                poster = node.get("posterImage")
+                if poster and poster.get("url"):
+                    thumb = poster["url"]
+
+                dday, dday_num, status = "", 9999, "접수중"
+                ts = node.get("recruitCloseAt")
+                if ts:
+                    end = datetime.fromtimestamp(ts / 1000, tz=KST).date()
+                    diff = (end - today).days
+                    if diff > 0:
+                        dday = f"D-{diff}"
+                        status = "마감임박" if diff <= 7 else "접수중"
+                    elif diff == 0:
+                        dday = "D-day"
+                        status = "오늘마감"
+                    else:
+                        dday = f"D+{abs(diff)}"
+                        status = "마감"
+                    dday_num = parse_dday_number(dday)
+
+                contests.append({
+                    "title": title,
+                    "host": host,
+                    "category": "공모전",
+                    "dday": dday,
+                    "dday_num": dday_num,
+                    "status": status,
+                    "link": detail_url,
+                    "thumb": thumb,
+                    "source": "링커리어",
+                })
+            except Exception:
+                continue
+
+    except Exception as e:
+        print(f"[linkareer] error: {e}")
 
     return contests
 
@@ -551,7 +618,8 @@ def generate_html(contests: list, updated_at: str) -> str:
     <footer>
       출처:
       <a href="https://www.wevity.com" target="_blank">위비티</a> ·
-      <a href="https://www.contestkorea.com" target="_blank">공모전 대통령</a><br>
+      <a href="https://www.contestkorea.com" target="_blank">콘테스트코리아</a> ·
+      <a href="https://linkareer.com" target="_blank">링커리어</a><br>
       매일 오전 9시(KST) GitHub Actions 자동 업데이트
     </footer>
   </div>
@@ -652,8 +720,12 @@ def main():
     contests.extend(wevity)
 
     korea = scrape_contestkorea()
-    print(f"  공모전대통령: {len(korea)}개")
+    print(f"  콘테스트코리아: {len(korea)}개")
     contests.extend(korea)
+
+    linkareer = scrape_linkareer()
+    print(f"  링커리어: {len(linkareer)}개")
+    contests.extend(linkareer)
 
     # 중복 제거 (제목 기준)
     seen = set()
