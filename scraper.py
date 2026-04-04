@@ -216,13 +216,6 @@ def generate_html(contests: list, updated_at: str) -> str:
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background: radial-gradient(
-        480px circle at var(--cx, -999px) var(--cy, -999px),
-        rgba(99,102,241,0.10) 0%,
-        rgba(139,92,246,0.06) 35%,
-        transparent 65%
-      );
-      transition: background 0.05s;
     }}
 
     /* ── 페이지 레이어 ── */
@@ -519,10 +512,9 @@ def generate_html(contests: list, updated_at: str) -> str:
     const ALL_CONTESTS = {contests_json};
 
     /* ── 전역 커서 스포트라이트 ── */
+    const cursorGlow = document.getElementById('cursorGlow');
     document.addEventListener('mousemove', (e) => {{
-      document.documentElement.style.setProperty('--cx', e.clientX + 'px');
-      document.documentElement.style.setProperty('--cy', e.clientY + 'px');
-      document.getElementById('cursorGlow').style.background =
+      cursorGlow.style.background =
         `radial-gradient(480px circle at ${{e.clientX}}px ${{e.clientY}}px,
           rgba(99,102,241,0.10) 0%,
           rgba(139,92,246,0.06) 35%,
