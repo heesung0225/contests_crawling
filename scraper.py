@@ -117,6 +117,55 @@ def scrape_wevity():
     return contests
 
 
+def get_contestkorea_detail(url: str) -> dict:
+    """공모전대통령 상세 페이지에서 썸네일·D-day·상태·주최 한 번에 수집"""
+    result = {"thumb": "", "dday": "", "dday_num": 9999, "status": "접수중", "host": "-"}
+    try:
+        res = SESSION.get(url, timeout=8)
+        soup = BeautifulSoup(res.text, "html.parser")
+
+        og = soup.find("meta", property="og:image")
+        if og and og.get("content"):
+            result["thumb"] = og["content"]
+
+        # th/td 테이블에서 접수기간·주최 파싱
+        for th in soup.find_all("th"):
+            label = th.get_text(strip=True)
+            td = th.find_next_sibling("td")
+            if not td:
+                continue
+            value = td.get_text(strip=True)
+
+            if "접수기간" in label:
+                # "2026.03.23 ~ 2026.04.19" → 마감일로 D-day 계산
+                parts = value.split("~")
+                if len(parts) == 2:
+                    end_str = parts[1].strip()  # "2026.04.19"
+                    try:
+                        end_date = datetime.strptime(end_str, "%Y.%m.%d").date()
+                        today = datetime.now(KST).date()
+                        diff = (end_date - today).days
+                        if diff > 0:
+                            result["dday"] = f"D-{diff}"
+                            result["status"] = "마감임박" if diff <= 7 else "접수중"
+                        elif diff == 0:
+                            result["dday"] = "D-day"
+                            result["status"] = "오늘마감"
+                        else:
+                            result["dday"] = f"D+{abs(diff)}"
+                            result["status"] = "마감"
+                        result["dday_num"] = parse_dday_number(result["dday"])
+                    except ValueError:
+                        pass
+
+            elif "주최" in label and result["host"] == "-":
+                result["host"] = value if value else "-"
+
+    except Exception:
+        pass
+    return result
+
+
 def scrape_contestkorea():
     """공모전 대통령 IT 공모전 크롤링"""
     contests = []
@@ -140,19 +189,18 @@ def scrape_contestkorea():
                 href = a_tag.get("href", "")
                 detail_url = "https://www.contestkorea.com" + href if href.startswith("/") else href
 
-                # 상세 페이지 og:image
-                thumb = get_og_image(detail_url)
+                detail = get_contestkorea_detail(detail_url)
                 time.sleep(0.2)
 
                 contests.append({
                     "title": title,
-                    "host": "-",
+                    "host": detail["host"],
                     "category": "IT·컴퓨터",
-                    "dday": "",
-                    "dday_num": 9999,
-                    "status": "접수중",
+                    "dday": detail["dday"],
+                    "dday_num": detail["dday_num"],
+                    "status": detail["status"],
                     "link": detail_url,
-                    "thumb": thumb,
+                    "thumb": detail["thumb"],
                     "source": "공모전대통령",
                 })
             except Exception:
