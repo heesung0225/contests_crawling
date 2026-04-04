@@ -504,15 +504,24 @@ def generate_html(contests: list, updated_at: str) -> str:
         inset 0 1px 0 rgba(255,255,255,1);
     }}
 
+    .card-img-wrap {{
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, rgba(165,180,252,0.25), rgba(147,197,253,0.25));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }}
     .card-img {{
       width: 100%;
-      height: 164px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
       display: block;
     }}
     .card-img-placeholder {{
       width: 100%;
-      height: 164px;
+      aspect-ratio: 4 / 3;
       background: linear-gradient(135deg, rgba(165,180,252,0.4), rgba(147,197,253,0.4));
       display: flex;
       align-items: center;
@@ -669,7 +678,7 @@ def generate_html(contests: list, updated_at: str) -> str:
 
     function renderCard(c) {{
       const imgHtml = c.thumb
-        ? `<img class="card-img" src="${{c.thumb}}" alt="${{c.title}}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>💻</div>'">`
+        ? `<div class="card-img-wrap"><img class="card-img" src="${{c.thumb}}" alt="${{c.title}}" loading="lazy" onerror="this.parentElement.outerHTML='<div class=card-img-placeholder>💻</div>'"></div>`
         : `<div class="card-img-placeholder">💻</div>`;
       const ddayBadge   = getDdayBadge(c.dday, c.dday_num);
       const statusBadge = c.status ? `<span class="badge badge-status">${{c.status}}</span>` : '';

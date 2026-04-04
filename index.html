@@ -220,15 +220,24 @@
         inset 0 1px 0 rgba(255,255,255,1);
     }
 
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, rgba(165,180,252,0.25), rgba(147,197,253,0.25));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
     .card-img {
       width: 100%;
-      height: 164px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
       display: block;
     }
     .card-img-placeholder {
       width: 100%;
-      height: 164px;
+      aspect-ratio: 4 / 3;
       background: linear-gradient(135deg, rgba(165,180,252,0.4), rgba(147,197,253,0.4));
       display: flex;
       align-items: center;
@@ -315,7 +324,7 @@
       <div class="header-card">
         <h1>💻 IT 공모전 Daily</h1>
         <p>IT·소프트웨어 분야 공모전 정보를 매일 자동 수집합니다</p>
-        <div class="update-badge">🔄 마지막 업데이트: 2026년 04월 04일 09:48 (KST)</div>
+        <div class="update-badge">🔄 마지막 업데이트: 2026년 04월 04일 09:58 (KST)</div>
       </div>
     </header>
 
@@ -385,7 +394,7 @@
 
     function renderCard(c) {
       const imgHtml = c.thumb
-        ? `<img class="card-img" src="${c.thumb}" alt="${c.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>💻</div>'">`
+        ? `<div class="card-img-wrap"><img class="card-img" src="${c.thumb}" alt="${c.title}" loading="lazy" onerror="this.parentElement.outerHTML='<div class=card-img-placeholder>💻</div>'"></div>`
         : `<div class="card-img-placeholder">💻</div>`;
       const ddayBadge   = getDdayBadge(c.dday, c.dday_num);
       const statusBadge = c.status ? `<span class="badge badge-status">${c.status}</span>` : '';
