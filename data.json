@@ -1,172 +1,7 @@
 {
-  "updated_at": "2026년 04월 04일 09:58 (KST)",
-  "count": 58,
+  "updated_at": "2026년 04월 04일 11:47 (KST)",
+  "count": 43,
   "contests": [
-    {
-      "title": "[과학기술정보통신부] 2026 글로벌 피우다프로젝트 (SW개발 경진대회)",
-      "host": "과학기술정보통신부",
-      "category": "분야 : 기획/아이디어, 웹/모바일/IT, 게임/소프트웨어, 과학/공학, 기타",
-      "dday": "D-44",
-      "dday_num": 44,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106194",
-      "thumb": "https://www.wevity.com/upload/contest/20260404055225_6d68c788.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "[대한민국시도지사협의회] 지방시대 숏폼 영상 공모전",
-      "host": "대한민국시도지사협의회",
-      "category": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 대외활동/서포터즈",
-      "dday": "D-40",
-      "dday_num": 40,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106166",
-      "thumb": "https://www.wevity.com/upload/contest/20260331232707_00f6dc6a.png",
-      "source": "위비티"
-    },
-    {
-      "title": "제13회 산업안전보건 조사자료 논문 경진대회",
-      "host": "한국산업안전보건공단 산업안전보건연구원",
-      "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 대외활동/서포터즈, 기타",
-      "dday": "D-58",
-      "dday_num": 58,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105566",
-      "thumb": "https://www.wevity.com/upload/contest/20260310002247_8635db02.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "제7기 과기정통부 LMO SAFETY 기자단 모집",
-      "host": "과학기술정보통신부",
-      "category": "분야 : 광고/마케팅, 논문/리포트, 영상/UCC/사진, 디자인/캐릭터/웹툰, 과학/공학, 대외활동/서포터즈",
-      "dday": "D-2",
-      "dday_num": 2,
-      "status": "마감임박",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105517",
-      "thumb": "https://www.wevity.com/upload/contest/20260309004822_3d9c9eac.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "제10회 소비자지향성 개선과제 공모전",
-      "host": "공정거래위원회",
-      "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 예체능/미술/음악, 기타",
-      "dday": "D-73",
-      "dday_num": 73,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105362",
-      "thumb": "https://www.wevity.com/upload/contest/20260302235747_3061936b.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "[산업통상부] 2026 엔지니어링산업 경진대회",
-      "host": "산업통상부",
-      "category": "분야 : 기획/아이디어, 광고/마케팅, 논문/리포트, 과학/공학, 건축/건설/인테리어",
-      "dday": "D-27",
-      "dday_num": 27,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=105361",
-      "thumb": "https://www.wevity.com/upload/contest/20260302222544_5bab69a5.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "2026 세계인권도시포럼 운영요원 모집",
-      "host": "광주광역시, 유네스코, 유엔 인권최고대표사무소",
-      "category": "분야 : 기타",
-      "dday": "D-23",
-      "dday_num": 23,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106276",
-      "thumb": "https://www.wevity.com/upload/contest/20260403212143_556c2cd8.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "제12회 2026년 보건의료빅데이터·AI 활용 창업경진대회",
-      "host": "보건복지부",
-      "category": "분야 : 취업/창업",
-      "dday": "D-56",
-      "dday_num": 56,
-      "status": "접수예정",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106270",
-      "thumb": "https://www.wevity.com/upload/contest/20260403204929_49b7031f.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "제1회 영주 선비 청소년 국악인재 경연대회",
-      "host": "영주시, 영주문화관광재단",
-      "category": "분야 : 예체능/미술/음악",
-      "dday": "D-21",
-      "dday_num": 21,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106267",
-      "thumb": "https://www.wevity.com/upload/contest/20260403202100_51275bc3.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "2026 제2회 해양치유 완도 전국 맨발걷기 축제",
-      "host": "완도군청",
-      "category": "분야 : 기타",
-      "dday": "D-28",
-      "dday_num": 28,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106265",
-      "thumb": "https://www.wevity.com/upload/contest/20260403201545_ee9e34eb.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "제5회 2026 전기안전 국민 공모전",
-      "host": "기후에너지환경부",
-      "category": "분야 : 기획/아이디어",
-      "dday": "D-44",
-      "dday_num": 44,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106257",
-      "thumb": "https://www.wevity.com/upload/contest/20260403152150_b9612d23.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "2026 바이오안전성·바이오산업 시민패널 모집",
-      "host": "한국생명공학연구원",
-      "category": "분야 : 대외활동/서포터즈",
-      "dday": "D-17",
-      "dday_num": 17,
-      "status": "접수예정",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106238",
-      "thumb": "https://www.wevity.com/upload/contest/20260402190237_2f0ebc74.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "제26회 대학(원)생 국제법 논문경시대회",
-      "host": "외교부, 대한국제법학회",
-      "category": "분야 : 논문/리포트",
-      "dday": "D-120",
-      "dday_num": 120,
-      "status": "접수예정",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106236",
-      "thumb": "https://www.wevity.com/upload/contest/20260402183900_bbd54226.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "2026년 국제법 학문후속세대 및 신진연구자 연구지원 사업 연구계획 공모",
-      "host": "외교부, 대한국제법학회",
-      "category": "분야 : 논문/리포트",
-      "dday": "D-27",
-      "dday_num": 27,
-      "status": "접수예정",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106234",
-      "thumb": "https://www.wevity.com/upload/contest/20260402182216_f2abed61.jpg",
-      "source": "위비티"
-    },
-    {
-      "title": "2026 오늘전통 청년 초기창업기업 공모",
-      "host": "(재)한국공예·디자인문화진흥원",
-      "category": "분야 : 취업/창업",
-      "dday": "D-13",
-      "dday_num": 13,
-      "status": "접수중",
-      "link": "https://www.wevity.com/?c=find&s=1&gub=1&cidx=6&gbn=view&gp=1&ix=106233",
-      "thumb": "https://www.wevity.com/upload/contest/20260402181652_3e79498a.jpg",
-      "source": "위비티"
-    },
     {
       "title": "2026 전라남도 관광기업 육성 및 창업 지원사업 예비창업자 모집",
       "host": "전라남도/(재)전라남도관광재단",
@@ -531,17 +366,6 @@
       "source": "링커리어"
     },
     {
-      "title": "2026 청춘어람 육성사업 참가자 모집 공고",
-      "host": "전라남도",
-      "category": "공모전",
-      "dday": "D-18",
-      "dday_num": 18,
-      "status": "접수중",
-      "link": "https://linkareer.com/activity/312437",
-      "thumb": "https://api.linkareer.com/attachments/804568",
-      "source": "링커리어"
-    },
-    {
       "title": "2026 금융권 공동채용 박람회 슬로건 공모전",
       "host": "은행연합회",
       "category": "공모전",
@@ -550,6 +374,17 @@
       "status": "접수중",
       "link": "https://linkareer.com/activity/312404",
       "thumb": "https://api.linkareer.com/attachments/804438",
+      "source": "링커리어"
+    },
+    {
+      "title": "2026 청춘어람 육성사업 참가자 모집 공고",
+      "host": "전라남도",
+      "category": "공모전",
+      "dday": "D-18",
+      "dday_num": 18,
+      "status": "접수중",
+      "link": "https://linkareer.com/activity/312437",
+      "thumb": "https://api.linkareer.com/attachments/804568",
       "source": "링커리어"
     },
     {
@@ -575,69 +410,69 @@
       "source": "링커리어"
     },
     {
-      "title": "현북스 2026년 1회 어린이·청소년 책 공모전",
-      "host": "현북스",
+      "title": "샤오미코리아 '빛의 미학' 공모전",
+      "host": "샤오미코리아",
       "category": "공모전",
-      "dday": "D-271",
-      "dday_num": 271,
+      "dday": "D-15",
+      "dday_num": 15,
       "status": "접수중",
-      "link": "https://linkareer.com/activity/304006",
-      "thumb": "https://api.linkareer.com/attachments/772240",
+      "link": "https://linkareer.com/activity/309162",
+      "thumb": "https://api.linkareer.com/attachments/792293",
       "source": "링커리어"
     },
     {
-      "title": "[이지북] 어린이역사문학상 공모 (-26.05.31)",
-      "host": "(주)자음과모음",
-      "category": "공모전",
-      "dday": "D-57",
-      "dday_num": 57,
-      "status": "접수중",
-      "link": "https://linkareer.com/activity/295873",
-      "thumb": "https://api.linkareer.com/attachments/742706",
-      "source": "링커리어"
-    },
-    {
-      "title": "제7회 MDF 패션디자인 공모전(~05/07)",
-      "host": "MD재단",
-      "category": "공모전",
-      "dday": "D-33",
-      "dday_num": 33,
-      "status": "접수중",
-      "link": "https://linkareer.com/activity/312965",
-      "thumb": "https://api.linkareer.com/attachments/806316",
-      "source": "링커리어"
-    },
-    {
-      "title": "생활 속 목재이용 국민참여 공모전 ‘목재 공감(共感) 키트’",
-      "host": "목재문화진흥회",
-      "category": "공모전",
-      "dday": "D-13",
-      "dday_num": 13,
-      "status": "접수중",
-      "link": "https://linkareer.com/activity/305821",
-      "thumb": "https://api.linkareer.com/attachments/779314",
-      "source": "링커리어"
-    },
-    {
-      "title": "「2026 진주 정원박람회」 푸드트럭 참여자 모집 공모",
-      "host": "한국가드너협동조합",
-      "category": "공모전",
-      "dday": "D-18",
-      "dday_num": 18,
-      "status": "접수중",
-      "link": "https://linkareer.com/activity/310637",
-      "thumb": "https://api.linkareer.com/attachments/799496",
-      "source": "링커리어"
-    },
-    {
-      "title": "[협성문화재단] 2026 제11회 NEW BOOK 프로젝트 공모",
-      "host": "(재)협성문화재단",
+      "title": "제2회 희망 서울 마라톤",
+      "host": "(사)대한생활체육연맹",
       "category": "공모전",
       "dday": "D-68",
       "dday_num": 68,
       "status": "접수중",
-      "link": "https://linkareer.com/activity/303987",
-      "thumb": "https://api.linkareer.com/attachments/772178",
+      "link": "https://linkareer.com/activity/308897",
+      "thumb": "https://api.linkareer.com/attachments/791299",
+      "source": "링커리어"
+    },
+    {
+      "title": "2026 푸른 하늘런",
+      "host": "(사)대한생활체육연맹",
+      "category": "공모전",
+      "dday": "D-54",
+      "dday_num": 54,
+      "status": "접수중",
+      "link": "https://linkareer.com/activity/308289",
+      "thumb": "https://api.linkareer.com/attachments/799468",
+      "source": "링커리어"
+    },
+    {
+      "title": "2026 참행복 마라톤",
+      "host": "(사)대한생활체육연맹",
+      "category": "공모전",
+      "dday": "D-71",
+      "dday_num": 71,
+      "status": "접수중",
+      "link": "https://linkareer.com/activity/308615",
+      "thumb": "https://api.linkareer.com/attachments/799617",
+      "source": "링커리어"
+    },
+    {
+      "title": "2026 큰별 하프 마라톤",
+      "host": "(사)대한생활체육연맹",
+      "category": "공모전",
+      "dday": "D-75",
+      "dday_num": 75,
+      "status": "접수중",
+      "link": "https://linkareer.com/activity/308915",
+      "thumb": "https://api.linkareer.com/attachments/799622",
+      "source": "링커리어"
+    },
+    {
+      "title": "2026 제2회 글로벌 프런티어 뷰티 아티스트 국제 공모전 (GFBAC)",
+      "host": "사단법인 글로벌 프런티어 뷰티 아티스트 협회",
+      "category": "공모전",
+      "dday": "D-26",
+      "dday_num": 26,
+      "status": "접수중",
+      "link": "https://linkareer.com/activity/310566",
+      "thumb": "https://api.linkareer.com/attachments/797777",
       "source": "링커리어"
     }
   ]
